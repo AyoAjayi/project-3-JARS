@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+body {
+    /*background: #333 url('/static/images/background.jpg') no-repeat center center/cover;*/
+    background: white;
+    color: black;
+}
+.container{
+    padding: 5px 5px 5px 5px;
+}
+
+
+/*Marketplace page*/
+#marketplace-navbar .container {
+    background: #00192F;
+    color: white;
+}
+#marketplace-navbar .tiny-links{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+#marketplace-navbar .tiny-links .helper-links{
+    display: flex;
+}
+#marketplace-navbar .tiny-links .helper-links .help{
+    margin-right : 20px;
+}
+
+#marketplace-navbar .big-bar{
+    display: flex;
+    justify-content: space-between;
+}
+#marketplace-navbar .big-bar .logo{
+    font-size: 2rem;
+}
+#marketplace-navbar .big-bar .search input{
+    font-size: 1rem;
+    border-radius: 3px;
+    padding: 6px 3px 5px 6px;
+}
+#marketplace-navbar .big-bar .search button{
+    margin-left: 5px;
+    font-size: 1rem;
+    border-radius: 3px;
+    padding: 8px 10px 8px 10px;
+    color: white;
+    background: #3665F3;
+    border:none;
+}
+
+#marketplace-navbar .big-bar .search{
+    display: flex;
+}
