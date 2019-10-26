@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
     margin: 0;
     padding: 0;
@@ -58,4 +59,11 @@ body {
 
 #marketplace-navbar .big-bar .search{
     display: flex;
+=======
+.wrapper {
+  height: 38em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+>>>>>>> cf0a64a5c79577beae00f41bf841d4cacb40e41f
 }
