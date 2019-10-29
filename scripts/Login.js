@@ -4,7 +4,7 @@ import GoogleLogin from 'react-google-login';
 
 /*global gapi*/
 
-// Created a login class to display the Google Login button when page is rendered.
+// Created a login class to display the Google Login button when page is rendered
 export class Login extends React.Component {
   constructor(props) {
     super(props);
