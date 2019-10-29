@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Linking style.css-->
+    <link rel="stylesheet" href="/static/style.css" type="text/css" />
+    
+    <title>Submit</title>
+</head>
+<body>
+    <navbar id = "marketplace-navbar">
+        <div class = "nav-container">
+            <div class = "tiny-links">
+                <div class = "helper-links">
+                    <div class = "help">
+                        <a href="#">Help and Contact</a>
+                    </div>
+                    <div class = "terms">
+                        <a href="#">Terms and Conditions</a>
+                    </div>
+                </div>
+                <!--<div class = "sell">-->
+                <!--    <a href="#">Sell a Book</a>-->
+                <!--</div>-->
+            </div>
+        
+            <div class = "big-bar">
+                <div class = "logo">
+                    <a href="#"><span class = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
+                </div>
+                <!--<div class = "search">-->
+                <!--    <div>-->
+                <!--        <input type="text" name="search-input" class = "search-input" placeholder = "Search for a textbook..."/>-->
+                <!--    </div>-->
+                <!--    <div>-->
+                <!--        <button>Search</button>-->
+                <!--    </div>-->
+                <!--</div>-->
+                <div>
+                    <button>Logout</button>
+                </div>
+            </div>
+        </div>
+    </navbar>
+    
+    <section id = "post-book">
+        <div class = "container">
+            <form class = "post-book-form">
+                <div>
+                    <input class="input-box" type="text" name="" placeholder="Name of the book"/>
+                </div>
+                <div>
+                    <input class="input-box" type="text" name="" placeholder="Name of the Author"/>
+                </div>
+                <div class = "input-course-isbn">
+                    <div>
+                        <input class="input-box" type="text" name="" placeholder="Morgan Course Name"/>
+                    </div>
+                    <div>
+                        <input class="input-box" type="text" name="" placeholder="ISBN"/>
+                    </div>
+                </div>
+                <div class = "input-price-condition">
+                    <div>
+                        <input class="input-box" type="text" name="" placeholder="Price"/>
+                    </div>
+                    <div>
+                        <input class="input-box" type="text" name="" placeholder="Condition of the book"/>
+                    </div>
+                </div>
+                <div>
+                    <textarea className="input-textarea input-box" cols="50" rows="2" placeholder = "Enter some description of your textbook..." ></textarea>
+                </div>
+                <div>
+                    <button class="post-book-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
