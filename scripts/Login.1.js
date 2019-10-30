@@ -1,12 +1,12 @@
 import * as React from 'react';
 import GoogleLogin from 'react-google-login';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from "react-router-dom";
-// import { Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 
 /*global gapi*/
@@ -20,10 +20,9 @@ export class Login extends React.Component {
     const responseGoogle = (response) => {
         let auth = gapi.auth2.getAuthInstance();
         let user = auth.currentUser.get();
-        //Does not work but was supposed to redirect to another page after user signed in.
-        // if (user.isSignedIn()) {
-        //   return <Redirect to="./static/marketplace.html"/>;
-        // }
+        if (user.isSignedIn()) {
+            <Link to="./static/marketplace.html"></Link>;
+        }
         if (user.isSignedIn()) {
             console.log("google token" + user.getAuthResponse().id_token);
         }
