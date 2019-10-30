@@ -33,7 +33,7 @@ export class Login extends React.Component {
       // Added a class for the login component to center it to the middle of the webpage. Css for wrapper class is in style.css file
       <div className ="wrapper">
         <GoogleLogin
-            clientId = '412518169761-vo15jqtbrgcbg30d9t690qc3odu17gk0.apps.googleusercontent.com'
+            clientId = '433826711359-r31ipjdt01vfjhgbdi1go9b1508c7t8g.apps.googleusercontent.com'
             buttonText="Sign in with Google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
