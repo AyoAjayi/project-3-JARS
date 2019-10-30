@@ -38,6 +38,18 @@ body {
     margin-top: 50px;
 }
 
+.content #content .wrapper{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.content a{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
 .J{
     color: #B71416;
     text-decoration: bold;
