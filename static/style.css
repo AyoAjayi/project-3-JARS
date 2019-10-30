@@ -7,9 +7,9 @@ a {
     text-decoration: none;
 }
 
-/*.content{*/
-/*    background: #fff url('/static/images/background.jpg') transparent no-repeat center center/cover;*/
-/*}*/
+#index-body{
+    background: #fff url('/static/images/background_index.jpg') no-repeat center center/cover;
+}
 
 body {
     background: white;
@@ -23,6 +23,12 @@ body {
 
 /*Index page*/
 
+#index-body #main-navbar {
+    display: block;
+    height: 0px;
+    width: auto;
+}
+
 #main-navbar .logo{
     font-family: 'Kaushan Script', cursive;
     margin-top: 15px;
@@ -35,7 +41,7 @@ body {
 }
 .content .welcome-text{
     text-align: center;
-    margin-top: 50px;
+    padding-top: 80px;
 }
 
 .content #content .wrapper{
@@ -47,7 +53,10 @@ body {
 .content a{
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 30px;
+    color: #660757;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .J{
@@ -71,7 +80,7 @@ body {
     font-size: 1.3rem;
 }
 .content .welcome-text .sign-in{
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     padding-top: 5px;
 }
 .content .signin-section{
