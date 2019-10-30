@@ -1,10 +1,3 @@
-.wrapper {
-  height: 4em;
-  display: flex;
-  align-items: center;
-  justify-content: center
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -13,8 +6,12 @@
 a {
     text-decoration: none;
 }
+
+/*.content{*/
+/*    background: #fff url('/static/images/background.jpg') transparent no-repeat center center/cover;*/
+/*}*/
+
 body {
-    /*background: #333 url('/static/images/background.jpg') no-repeat center center/cover;*/
     background: white;
     color: black;
 }
@@ -174,4 +171,26 @@ body {
 .input-box:focus{
     border: 0.8px #137F80 solid;
     border-bottom: 2px #137F80 solid;
+}
+
+#common-footer{
+    color: white;
+    text-align: center;
+    padding: 10px 5px 5px 5px;
+    background: #09222A;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+#common-footer a{
+    color: white;
+}
+
+#common-footer .common-footer-links{
+    display: flex;
+}
+
+#common-footer .common-footer-links .footer-link{
+    margin-right: 20px;
 }
