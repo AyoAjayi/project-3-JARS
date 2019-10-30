@@ -2,7 +2,8 @@
 
 ### JARS
 
-##Link
+##Heroku Deployment Link
+[a link]()
 
 ## Description
 We have app called JARS that allows Morgan State students to buy and sell textbooks with ease. This app tackles the issues incoming students face when they have to purchase expensive textbooks from the bookstore. Upperclassmen have these books, and could sell it for affordable prices. We have created a platform with Morgan State students in mind and are passionate about making the process of acquiring textbooks easy.
@@ -13,7 +14,6 @@ We have app called JARS that allows Morgan State students to buy and sell textbo
 -
 -
 -
-
 
 ### Built With:
 - React- Fronted end
