@@ -2,9 +2,10 @@
 
 ### JARS
 
+## Description
+
 We aim to deliver an app that allows Morgan State students to buy and sell textbooks with ease. This app will allow users to  buy or sell textbooks after being logged in using google. Sellers  will be able to create a profile and post books they have to sell and will be given the means to contact a buyer in order to set up a transaction. Sellers will provide their Morgan email address with the item listing for initial point of contact to make a transaction. Buyers will be able to search for books through our web app.
 At this point of time, JARS is under development cycle (implementation phase) therefore it is only the layout of our webapp.
-
 
 ## Getting started
 - Install Flask
