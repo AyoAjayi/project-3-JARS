@@ -2,7 +2,7 @@
 
 ### JARS
 
-This program is a simple public online chat application where multiple people can send and reply to each other's messages (very similar to group chat feature in modern chat applications).
+This program is a simple marketplace webapp where Morgan State University students can buy and sell textbooks. At this moment, it is under development(implementation phase) cycle.
 
 
 
@@ -12,7 +12,7 @@ This program is a simple public online chat application where multiple people ca
 - Flask- Microframework
 - PostgreSQL- Database
 - WebSocket (Socket.io)- For full duplex communication channel
-- Additional libraries- flask_socketio, flask_sqlalchemy, psycopg2, requests, rfc3987, google.oauth2
+- Additional libraries- flask_socketio, flask_sqlalchemy, psycopg2, requests, google.oauth2
 
 
 ## A:
