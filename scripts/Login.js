@@ -1,5 +1,7 @@
 import * as React from 'react';
 import GoogleLogin from 'react-google-login';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { Marketplace } from './Marketplace';
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -15,6 +17,14 @@ import GoogleLogin from 'react-google-login';
 export class Login extends React.Component {
   constructor(props) {
     super(props);
+    
+    this.state = {
+      loggedIn : false,
+    }
+    
+    this.setLoggedIn = () => {
+      this.setState({loggedIn: true})
+    }
   }
   render() {
     const responseGoogle = (response) => {
@@ -25,7 +35,12 @@ export class Login extends React.Component {
         //   return <Redirect to="./static/marketplace.html"/>;
         // }
         if (user.isSignedIn()) {
-            console.log("google token" + user.getAuthResponse().id_token);
+            console.log("Google Token:  " + user.getAuthResponse().id_token);
+            if (this.state.loggingIn) {
+              console.log('Inside the function');
+              return <Redirect to='/marketplace'/>;
+              // return this.props.history.push('/marketplace/');
+            }
         }
         console.log(response);
     };
