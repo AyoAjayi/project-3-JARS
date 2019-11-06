@@ -7,8 +7,18 @@ a {
     text-decoration: none;
 }
 
-#index-body{
+/*#index-body{*/
+/*    background: #D6D7C3 url('/static/images/background_index.jpg') no-repeat center center/cover;*/
+/*}*/
+
+.home-content{
     background: #D6D7C3 url('/static/images/background_index.jpg') no-repeat center center/cover;
+    height: 100vh;
+}
+.home-content .login-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
 }
 
 body {
@@ -97,10 +107,7 @@ body {
 
 /*Navbar Section*/
 #marketplace-navbar .nav-container{
-    padding: 5px 8px 5px 8px;
-}
-
-#marketplace-navbar .nav-container {
+    padding: 3px 8px 2px 8px;
     background: #0A192F;
     color: white;
 }
@@ -108,7 +115,7 @@ body {
 #marketplace-navbar .tiny-links{
     display: flex;
     justify-content: space-between;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 #marketplace-navbar .tiny-links a{
     color: white;
@@ -132,7 +139,8 @@ body {
 #marketplace-navbar .big-bar .search input{
     font-size: 1rem;
     border-radius: 3px;
-    padding: 6px 3px 5px 6px;
+    padding: 8px 3px 8px 3px;
+    border:none;
 }
 #marketplace-navbar .big-bar .search button{
     margin-left: 5px;
@@ -148,11 +156,20 @@ body {
     display: flex;
 }
 
+#marketplace-navbar .big-bar .sell-logout{
+    display: flex;
+}
+
+#marketplace-navbar .big-bar .sell-logout a{
+    color: white;
+    margin-right: 10px;
+}
+
 /*Listing section*/
 
-#listing-section .unit-listing{
-    /*background: yellow;*/
-}
+/*#listing-section .unit-listing{*/
+/*    background: yellow;*/
+/*}*/
 
 #listing-section .listing{
     padding: 10px 20px 10px 20px;
@@ -197,7 +214,7 @@ body {
 #common-footer{
     color: white;
     text-align: center;
-    padding: 10px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
     background: #09222A;
     position: absolute;
     bottom: 0;
@@ -206,6 +223,7 @@ body {
 }
 #common-footer a{
     color: white;
+    font-size: 0.85rem;
 }
 
 #common-footer .common-footer-links{
