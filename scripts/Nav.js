@@ -1,29 +1,52 @@
 import * as React from 'react';
 import { Logout } from './Logout';
+import { Socket } from './Socket';
 import { Link } from 'react-router-dom';
 
 export class Nav extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      search_input : ''
+    };
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeSearchInput = this.handleChangeSearchInput.bind(this);
   }
+  
+  handleSubmit(event){
+      event.preventDefault();
+    //   *** search_input is sent from client to server ***
+      Socket.emit('new search', {
+          'search_input': this.state.search_input
+      });
+      
+      console.log('Search submitted to server!',this);
+      console.log('Searched Item:', this.state.search_input);
+  }
+  handleChangeSearchInput(event) {
+      this.setState({search_input: event.target.value});
+      console.log('search_input:', event.target.value);
+  }
+      
   render() {
     return (
         <div>
             <nav id = "marketplace-navbar">
-                <div class = "nav-container">
-                    <div class = "big-bar">
-                        <div class = "logo">
-                            <a href="#"><span class = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
+                <div className = "nav-container">
+                    <div className = "big-bar">
+                        <div className = "logo">
+                            <a href="#"><span className = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
                         </div>
-                        <div class = "search">
+                        <form className = "search" onSubmit = {this.handleSubmit}>
                             <div>
-                                <input type="text" name="search-input" class = "search-input" placeholder = "Search for a textbook..."/>
+                                <input type="text" name="search-input" className = "search-input" placeholder = "Search for a textbook..." value = {this.state.search_input} onChange = {this.handleChangeSearchInput} />
                             </div>
                             <div>
                                 <button>Search</button>
                             </div>
-                        </div>
-                        <div class = "sell-logout">
+                        </form>
+                        <div className = "sell-logout">
                             <Link to="/sell-a-book">Sell a Book</Link>
                             {/*Google Logout button is here*/}
                             <div> <Logout/> </div>
