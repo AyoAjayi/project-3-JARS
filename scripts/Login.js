@@ -26,13 +26,15 @@ export class Login extends React.Component {
         // On success, will redirect to marketplace component
         if (user.isSignedIn()) {
             console.log("Google Token:  " + user.getAuthResponse().id_token);
-            if (this.state.loggedIn === true) {
-              console.log('Inside the function');
-              return <Redirect to='/marketplace' />;
-            }
+            this.setLoggedIn();
+            // if (this.state.loggedIn === true) {
+            //   console.log('Inside the function');
+            //   return <Redirect to='/marketplace' />;
+            // }
         }
         console.log(response);
     };
+
     return (
       // Added a class for the login component to center it to the middle of the webpage. Css for wrapper class is in style.css file
       <div className = "wrapper">

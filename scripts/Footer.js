@@ -9,14 +9,14 @@ export class Footer extends React.Component {
     return (
         <div>
             <footer id = "common-footer">
-                <div class = "common-footer-links">
-                    <div class = "footer-link">
+                <div className = "common-footer-links">
+                    <div className = "footer-link">
                         <a href="#">About JARS</a>
                     </div>
-                    <div class = "footer-link">
+                    <div className = "footer-link">
                         <a href="#">Announcements</a>
                     </div>
-                    <div class = "footer-link">
+                    <div className = "footer-link">
                         <a href="#">Policies</a>
                     </div>
                 </div>

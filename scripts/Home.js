@@ -34,22 +34,22 @@ export class Home extends React.Component {
         <Header/>
       
         <nav id = "main-navbar">
-          <div class = "logo">
+          <div className = "logo">
               <a href="#"><span class = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
           </div>
         </nav>
         
-        <section class = "content">
-          <div class = "welcome-text">
-              <h1 class = "hello">Hello</h1>
-              <p class = "welcome">Welcome to JARS</p>
-              <p class = "sign-in">Sign in with Google to continue...</p>
+        <section className = "content">
+          <div className = "welcome-text">
+              <h1 className = "hello">Hello</h1>
+              <p className = "welcome">Welcome to JARS</p>
+              <p className = "sign-in">Sign in with Google to continue...</p>
           </div>
           
         </section>
         
         <Login/>
-        <div class = "login-button">
+        <div className = "login-button">
           <button onClick = {this.ClickedLogIn} >Log in</button>
         </div>
         

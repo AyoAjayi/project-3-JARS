@@ -9,13 +9,13 @@ export class Header extends React.Component {
     return (
         <div>
             <nav id = "marketplace-navbar">
-                <div class = "nav-container">
-                    <div class = "tiny-links">
-                        <div class = "helper-links">
-                            <div class = "help">
+                <div className = "nav-container">
+                    <div className = "tiny-links">
+                        <div className = "helper-links">
+                            <div className = "help">
                                 <a href="#">Help and Contact</a>
                             </div>
-                            <div class = "terms">
+                            <div className = "terms">
                                 <a href="#">Terms and Conditions</a>
                             </div>
                         </div>
