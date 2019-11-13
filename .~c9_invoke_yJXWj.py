@@ -38,18 +38,12 @@ def on_disconnect():
 @socketio.on('new search')
 def on_new_search(search_data):
     print ("Got an event for new search with data: "+ str(search_data))
-    
-    #extracted_search_data is the value of the user's search input
-    extracted_search_data = str(search_data["search_input"])
-    
-    #Queried the database
+    if search_data.isnum():
+        search_isbn = search_isbn
+    elif search_isbn.isstring
     messages = models.Message.query.all()
-    
-    #Created an array to store all the contents of the database
     all_item = []
-    
-    #Different categories in the database: textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact
-    # Populate all_item array with contents of the database. The all_item array is a 2d array.
+    # textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact
     for i in messages:
        textbook_name = i.textbook_name
        category = i.category
@@ -63,24 +57,7 @@ def on_new_search(search_data):
        seller_contact = i.seller_contact
        each_item = [textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact]
        all_item.append(each_item)
-    # print(all_item)
-    
-    #If user searched for a book using the isbn number, check if the isbn is in the database
-    if extracted_search_data.isdigit():
-        search_isbn = extracted_search_data
-        for item in all_item:
-            for each_item in item:
-                if str(search_isbn) == str(each_item):
-                    print('Found ISBN')
-                    
-    #If user searched for a book used the textbook name, check if the textbook name is in the database.               
-    else:
-        search_name = extracted_search_data
-        for item in all_item:
-            for each_item in item:
-                if search_name.lower() == str(each_item).lower():
-                    print('Found data')
-   
+    print(all_item)
     
 # *** Server received a new submit event sent by client(Submit.js) ***
 @socketio.on('new submit')
