@@ -1,2 +1,5 @@
 flask
 google-api-python-client
+Flask-SQLAlchemy==2.1
+flask_socketio
+psycopg2-binary
