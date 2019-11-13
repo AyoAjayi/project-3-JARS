@@ -12,8 +12,12 @@ a {
 /*}*/
 
 .home-content{
-    background: #D6D7C3 url('/static/images/background_index.jpg') no-repeat center center/cover;
+    background: url('/static/images/JARS.png') ;
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+ 
 }
 .home-content .login-button{
     display: flex;

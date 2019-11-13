@@ -7,7 +7,12 @@ import { Footer } from './Footer';
 export class Marketplace extends React.Component {
   constructor(props) {
     super(props);
+    
+    this.state = {
+        data: null,
+    };
   }
+  
   render() {
     return (
       <div>
