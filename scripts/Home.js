@@ -17,15 +17,15 @@ export class Home extends React.Component {
     
     this.state = {
       loggedIn : false
-    }
+    };
     
     this.ClickedLogIn = () => {
-      this.setState({loggedIn: true})
-    }
+      this.setState({loggedIn: true});
+    };
   }
   render() {
     if (this.state.loggedIn === true) {
-      return <Redirect to='/marketplace' />
+      return <Redirect to='/marketplace' />;
     }
     return (
       // Added a class for the login component to center it to the middle of the webpage. Css for wrapper class is in style.css file
@@ -35,7 +35,7 @@ export class Home extends React.Component {
       
         <nav id = "main-navbar">
           <div className = "logo">
-              <a href="#"><span class = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
+              <a href="#"><span className = "J">J</span><span className = "A">A</span><span className = "R">R</span><span className= "S">S</span></a>
           </div>
         </nav>
         

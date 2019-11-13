@@ -4,6 +4,7 @@ import { Socket } from './Socket';
 import { Header } from './Header';
 import { Nav } from './Nav';
 import { Footer } from './Footer';
+import { Upload } from './Upload';
 
 export class Submit extends React.Component {
   constructor(props) {
@@ -145,15 +146,12 @@ export class Submit extends React.Component {
                     <div>
                         <button className="post-book-submit">Submit</button>
                     </div>
-                    <div>
-                        <input type="file" onChange={this.fileChangedHandler}/>
-                        <button onClick={this.uploadHandler}>Upload!</button>
-                    </div>
                 </form>
             </div>
         </section>
         {/*Footer component is here*/}
         <Footer/>
+        <Upload/>
       </div>
     );
   }
