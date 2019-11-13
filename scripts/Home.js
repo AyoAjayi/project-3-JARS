@@ -39,7 +39,7 @@ export class Home extends React.Component {
           </div>
         </nav>
         
-        <section className = "content">
+        {/*<section className = "content">
           <div className = "welcome-text">
               <h1 className = "hello">Hello</h1>
               <p className = "welcome">Welcome to JARS</p>
@@ -47,6 +47,7 @@ export class Home extends React.Component {
           </div>
           
         </section>
+        */}
         
         <Login/>
         <div className = "login-button">

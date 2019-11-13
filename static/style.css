@@ -20,9 +20,13 @@ a {
  
 }
 .home-content .login-button{
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    font-size: 18px;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*margin-top: 5px;*/
 }
 
 body {
@@ -53,15 +57,19 @@ body {
     font-weight: 600;
     padding: 5px 0 0 10px;
 }
-.content .welcome-text{
-    text-align: center;
-    padding-top: 80px;
-}
+/*.content .welcome-text{*/
+/*    text-align: center;*/
+/*    padding-top: 80px;*/
+/*}*/
 
 #content .wrapper{
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    font-size: 18px;
+    /*margin-top: 120px;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
 }
 
 .temp-link{
