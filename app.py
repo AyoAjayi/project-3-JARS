@@ -53,13 +53,6 @@ def on_new_submit(submit_data):
     price = submit_data['price']
     condition = submit_data['condition']
     description = submit_data['description']
-    # textbook_id = str(submit_data['item_name'])
-    
-    # array = []
-    # for i in submit_data:
-    #   if i != 'textbook_name':
-    #     array.append((str(i), str(submit_data[i])))
-    # print(array)
     data = models.Message(textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact)
     models.db.session.add(data)
     models.db.session.commit()
