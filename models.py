@@ -3,12 +3,12 @@ import flask
 import flask_socketio
 import os
 
-app.app.config['SQLALCHEMY_DATABASE_URI'] =   os.getenv('DATABASE_URL')
+# app.app.config['SQLALCHEMY_DATABASE_URI'] =   os.getenv('DATABASE_URL')
 
-# app.app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ayo:ayo@localhost/postgres'
+app.app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://projectjars:ProjectJars2019@localhost/postgres'
+db = flask_sqlalchemy.SQLAlchemy(app.app)
 # textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact
 
-db = flask_sqlalchemy.SQLAlchemy(app.app)
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # key
     textbook_name = db.Column(db.String(500))
