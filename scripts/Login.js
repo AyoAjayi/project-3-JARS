@@ -2,6 +2,7 @@ import * as React from 'react';
 import GoogleLogin from 'react-google-login';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { Marketplace } from './Marketplace';
+import { Socket } from './Socket';
 
 /*global gapi*/
 
@@ -12,13 +13,41 @@ export class Login extends React.Component {
     
     this.state = {
       loggedIn : false
-    }
+    };
     
     this.setLoggedIn = () => {
-      this.setState({loggedIn: true})
-    }
+      this.setState({loggedIn: true});
+    };
   }
+  
+  componentDidMount(){
+    Socket.on('username_received', (data_one) => {
+            this.setState({
+                'username': data_one['user_name'],
+            });
+        });
+  }
+  
+  componentDidMount(){
+    Socket.on('email_received', (data_two) => {
+            this.setState({
+                'email': data_two['user_email'],
+            });
+        });
+  }
+  componentDidMount(){
+    Socket.on('image_received', (data) => {
+            this.setState({
+                'image': data['imageUrl'],
+            });
+        });
+  }
+  
   render() {
+    console.log(this.state.username);
+    console.log(this.state.email);
+    console.log(this.state.image);
+    
     const responseGoogle = (response) => {
         let auth = gapi.auth2.getAuthInstance();
         let user = auth.currentUser.get();
@@ -26,21 +55,27 @@ export class Login extends React.Component {
         // On success, will redirect to marketplace component
         if (user.isSignedIn()) {
             console.log("Google Token:  " + user.getAuthResponse().id_token);
-            this.setLoggedIn();
+            console.log(response);
+        this.setState({user_credentials: response});
+        Socket.emit('login', 
+            {'data': this.state.user_credentials
+        },
+        );
             // if (this.state.loggedIn === true) {
             //   console.log('Inside the function');
             //   return <Redirect to='/marketplace' />;
             // }
         }
-        console.log(response);
+       
     };
 
     return (
+  
       // Added a class for the login component to center it to the middle of the webpage. Css for wrapper class is in style.css file
       <div className = "wrapper">
         <GoogleLogin
           clientId = '433826711359-r31ipjdt01vfjhgbdi1go9b1508c7t8g.apps.googleusercontent.com'
-          buttonText="Sign in with Google"
+         usernameonText="Sign in with Google"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           theme='dark'

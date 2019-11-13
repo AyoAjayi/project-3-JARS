@@ -16,7 +16,8 @@ export class Submit extends React.Component {
       isbn: '',
       price: '',
       condition: '',
-      description: ''
+      description: '',
+      category:''
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,6 +28,7 @@ export class Submit extends React.Component {
     this.handleChangePrice = this.handleChangePrice.bind(this);
     this.handleChangeCondition = this.handleChangeCondition.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
+    this.handleChangeCategory = this.handleChangeCategory.bind(this);
     
   }
   handleSubmit(event){
@@ -39,7 +41,8 @@ export class Submit extends React.Component {
           'isbn': this.state.isbn,
           'price': this.state.price,
           'condition': this.state.condition,
-          'description': this.state.description
+          'description': this.state.description,
+          'category': this.state.category
       });
     //   In order to clear the input field after sending the message.
       this.setState({
@@ -49,7 +52,8 @@ export class Submit extends React.Component {
           isbn: '',
           price: '',
           condition: '',
-          description: ''
+          description: '',
+          category: ''
       });
       console.log('Item submitted to server!',this);
       console.log('Item Name:', this.state.item_name);
@@ -59,6 +63,7 @@ export class Submit extends React.Component {
       console.log('Price:', this.state.price);
       console.log('Condition:', this.state.condition);
       console.log('Description:', this.state.description);
+      console.log('Category', this.state.category);
     }
     
     handleChangeItemName(event) {
@@ -90,6 +95,10 @@ export class Submit extends React.Component {
         this.setState({description: event.target.value});
         console.log('description: ', event.target.value);
     }
+    handleChangeCategory(event){
+        this.setState({category: event.target.value});
+        console.log('category: ', event.target.value);
+    }
     
     
   render() {
@@ -106,6 +115,7 @@ export class Submit extends React.Component {
                     <div>
                         <input className="input-box" type="text" name="" placeholder="Name of the book" value = {this.state.item_name} onChange = {this.handleChangeItemName}/>
                     </div>
+                    
                     <div>
                         <input className="input-box" type="text" name="" placeholder="Name of the Author" value = {this.state.author_name} onChange = {this.handleChangeAuthorName}/>
                     </div>
@@ -124,12 +134,20 @@ export class Submit extends React.Component {
                         <div>
                             <input className="input-box" type="text" name="" placeholder="Condition of the book" value = {this.state.condition} onChange = {this.handleChangeCondition}/>
                         </div>
+                        <div>
+                            <input className="input-box" type="text" name="" placeholder="Category" value = {this.state.category} onChange = {this.handleChangeCategory}/>
+                        </div>
                     </div>
                     <div>
                         <textarea className="input-textarea input-box" cols="50" rows="2" placeholder = "Enter some description of your textbook..." value = {this.state.description} onChange = {this.handleChangeDescription}></textarea>
                     </div>
+                    
                     <div>
                         <button className="post-book-submit">Submit</button>
+                    </div>
+                    <div>
+                        <input type="file" onChange={this.fileChangedHandler}/>
+                        <button onClick={this.uploadHandler}>Upload!</button>
                     </div>
                 </form>
             </div>
