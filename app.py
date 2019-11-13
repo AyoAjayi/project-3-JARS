@@ -1,7 +1,7 @@
 import os, flask, flask_socketio, flask_sqlalchemy
-import models
 
 app = flask.Flask(__name__)
+import models  # It needs to be here
 socketio = flask_socketio.SocketIO(app)
 
 @app.route('/')
