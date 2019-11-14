@@ -119,6 +119,11 @@ export class Submit extends React.Component {
                     <div>
                         <input className="input-box" type="text" name="" placeholder="Name of the Author" value = {this.state.author_name} onChange = {this.handleChangeAuthorName}/>
                     </div>
+                    
+                    <div>
+                        <input className="input-box" type="text" name="" placeholder="Category" value = {this.state.category} onChange = {this.handleChangeCategory}/>
+                    </div>
+                    
                     <div className = "input-course-isbn">
                         <div>
                             <input className="input-box" type="text" name="" placeholder="Morgan Course Name" value = {this.state.course_name} onChange = {this.handleChangeCourseName}/>
@@ -134,9 +139,7 @@ export class Submit extends React.Component {
                         <div>
                             <input className="input-box" type="text" name="" placeholder="Condition of the book" value = {this.state.condition} onChange = {this.handleChangeCondition}/>
                         </div>
-                        <div>
-                            <input className="input-box" type="text" name="" placeholder="Category" value = {this.state.category} onChange = {this.handleChangeCategory}/>
-                        </div>
+                        
                     </div>
                     <div>
                         <textarea className="input-textarea input-box" cols="50" rows="2" placeholder = "Enter some description of your textbook..." value = {this.state.description} onChange = {this.handleChangeDescription}></textarea>
@@ -145,6 +148,7 @@ export class Submit extends React.Component {
                     <div>
                         <button className="post-book-submit">Submit</button>
                     </div>
+                    {/*Upload file option is here*/}
                     <div>
                         <input type="file" onChange={this.fileChangedHandler}/>
                         <button onClick={this.uploadHandler}>Upload!</button>

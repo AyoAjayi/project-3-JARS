@@ -20,13 +20,18 @@ a {
  
 }
 .home-content .login-button{
-    position: absolute;
-    top: 60px;
-    right: 16px;
-    font-size: 18px;
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*margin-top: 5px;*/
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.home-content .login-button button{
+    font-size: 1.1rem;
+    background: #2DBF7C;
+    color:white;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 7px 6px 7px;
 }
 
 body {
@@ -57,19 +62,17 @@ body {
     font-weight: 600;
     padding: 5px 0 0 10px;
 }
-/*.content .welcome-text{*/
-/*    text-align: center;*/
-/*    padding-top: 80px;*/
-/*}*/
+.content .welcome-text{
+    color: white;
+    text-align: center;
+    padding-top: 80px;
+}
 
 #content .wrapper{
-    position: absolute;
-    top: 20px;
-    right: 16px;
+    margin-top: 20px;
     font-size: 18px;
-    /*margin-top: 120px;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
+    display: flex;
+    justify-content: center;
 }
 
 .temp-link{
@@ -185,6 +188,10 @@ body {
 
 #listing-section .listing{
     padding: 10px 20px 10px 20px;
+}
+#listing-section .listing li{
+    margin-bottom: 10px;
+    list-style: none;
 }
 
 #listing-section .unit-listing .course-isbn{
