@@ -23,9 +23,9 @@ At this point of time, JARS is under development cycle (implementation phase) th
 
 
 ## Known Issues
-- After user being logged in through Google, google login button does not automatically redirect the user to the next page (marketplace page). For deomnstration purpose, we have included a link 'Click here to go to next page...' which will take to marketplace page on click.
-- None of the buttons on our app are functional except 'Login with Google' button because everything we have done till this point of time is layout of our app.
-- Background image on landing pages does not scale on different screen sizes.
+- After user being logged in through Google, google login button does not automatically redirect the user to the next page (marketplace page). For deomnstration purpose, we have included a login button below the google login button to redirect.
+- Sometimes when users 
+- 
 
 ## Resolution to Issues
 - We can make our web app to redirect to marketplace page after successful login from user using react router.
