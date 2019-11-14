@@ -41,14 +41,15 @@ def on_new_search(search_data):
     
     #extracted_search_data is the value of the user's search input
     extracted_search_data = str(search_data["search_input"])
+    print("extracted_search_data:", extracted_search_data)
     
     #Queried the database
     messages = models.Message.query.all()
     
-    #Created an array to store all the contents of the database
+    # Created an array to store all the contents of the database
     all_item = []
     
-    #Different categories in the database: textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact
+    # Different categories in the database: textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact
     # Populate all_item array with contents of the database. The all_item array is a 2d array.
     for i in messages:
        textbook_name = i.textbook_name
@@ -63,24 +64,31 @@ def on_new_search(search_data):
        seller_contact = i.seller_contact
        each_item = [textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact]
        all_item.append(each_item)
-    # print(all_item)
+    print(all_item)
+    
+    # List that will carry all items to be rendered for display.
+    items_to_render = []
     
     #If user searched for a book using the isbn number, check if the isbn is in the database
     if extracted_search_data.isdigit():
         search_isbn = extracted_search_data
-        for item in all_item:
-            for each_item in item:
-                if str(search_isbn) == str(each_item):
-                    print('Found ISBN')
+        for single_item1 in all_item:
+            if single_item1[4] == str(search_isbn):
+                items_to_render.append(single_item1)
+        print("Items to be rendered1:",items_to_render)
                     
     #If user searched for a book used the textbook name, check if the textbook name is in the database.               
     else:
         search_name = extracted_search_data
-        for item in all_item:
-            for each_item in item:
-                if search_name.lower() == str(each_item).lower():
-                    print('Found data')
-   
+        for single_item2 in all_item:
+            if single_item2[0] == str(search_name):
+                items_to_render.append(single_item2)
+        print("Items to be rendered2:",items_to_render)
+        
+    # Sending a list('items_to_render') to client for display
+    socketio.emit('be rendered', {'render_list': items_to_render})
+    print("Render list sent to client.")
+    
     
 # *** Server received a new submit event sent by client(Submit.js) ***
 @socketio.on('new submit')
