@@ -39,19 +39,18 @@ export class Home extends React.Component {
           </div>
         </nav>
         
-        {/*<section className = "content">
+        <section className = "content">
           <div className = "welcome-text">
               <h1 className = "hello">Hello</h1>
               <p className = "welcome">Welcome to JARS</p>
               <p className = "sign-in">Sign in with Google to continue...</p>
           </div>
-          
         </section>
-        */}
         
         <Login/>
+        
         <div className = "login-button">
-          <button onClick = {this.ClickedLogIn} >Log in</button>
+          <button onClick = {this.ClickedLogIn} >Begin Shopping</button>
         </div>
         
         {/*Footer component is here*/}
