@@ -1,5 +1,6 @@
 import os, flask, flask_socketio, flask_sqlalchemy
 
+
 app = flask.Flask(__name__)
 import models  # It needs to be here
 socketio = flask_socketio.SocketIO(app)
@@ -12,6 +13,7 @@ def hello():
 # ***** Body *****
 @socketio.on('login')
 def on_login(response):
+    #These are global variables because we might need them
     global seller_name
     global seller_contact
     
