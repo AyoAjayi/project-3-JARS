@@ -23,11 +23,16 @@ At this point of time, JARS is under development cycle (implementation phase) th
 
 
 ## Known Issues
-- After user being logged in through Google, google login button does not automatically redirect the user to the next page (marketplace page). For deomnstration purpose, we have included a link 'Click here to go to next page...' which will take to marketplace page on click.
-- None of the buttons on our app are functional except 'Login with Google' button because everything we have done till this point of time is layout of our app.
-- Background image on landing pages does not scale on different screen sizes.
+- After user being logged in through Google, google login button does not automatically redirect the user to the next page (marketplace page). For deomnstration purpose, we have included a login button below the google login button to redirect.
+- Our current database is not optimal for differentiating between buyers and sellers and we might run into issues when scaling the database to handle a lot of people. We need a better data model
+- The way we are retrieving data from our database is by querying the database at once. This is not optimal.
+- We have an upload picture button for the user to upload their textbooks. This button is not currently storing the photos the user uploads.
+- Our search field at times, does not let user conduct searches after another.
+- The user should be able to switch back and forth between multiple pages
 
 ## Resolution to Issues
 - We can make our web app to redirect to marketplace page after successful login from user using react router.
-- We will make all the button functional for checkpoint2.
-- Size of background image is the issue in itself. We can fix that issue by using different image of larger size and of aspect ratio of 3:2(which will compatiable for most of screen sizes).
+- We need to create a better data model that identifies relationships between the different fields in our database.
+- We will have to store the uploaded photo so we can render it to the client when a search occurs.
+- We would need to look at the client side of our code to see where the issue is stemming from, since we are currently unsure
+- We have to use react router to implement this into our web app.
