@@ -19,7 +19,7 @@ def on_login(response):
     
     seller_name = str(response['data']['profileObj']['name'])
     seller_contact = str(response['data']['profileObj']['email'])
-    image = str(response['data']['profileObj']['imageUrl'])
+    # image = str(response['data']['profileObj']['imageUrl'])
     # print(image)
     # print(name)
     # socketio.emit('username_received', {'user_name': name})
