@@ -4,6 +4,8 @@ import { Socket } from './Socket';
 import { Header } from './Header';
 import { Nav } from './Nav';
 import { Footer } from './Footer';
+import { Logout } from './Logout';
+import { Link } from 'react-router-dom';
 
 export class Submit extends React.Component {
   constructor(props) {
@@ -17,7 +19,7 @@ export class Submit extends React.Component {
       price: '',
       condition: '',
       description: '',
-      category:''
+      category:'',
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -107,55 +109,74 @@ export class Submit extends React.Component {
         {/*Header component is here*/}
         <Header/>
         {/*Navbar component is here*/}
-        <Nav/>
+        {/* <Nav/> */}
+        
+        <div>
+            <nav id = "marketplace-navbar">
+                <div className = "nav-container">
+                    <div className = "big-bar">
+                        <div className = "logo">
+                            <a href="#"><span className = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
+                        </div>
+
+                        <div className = "sell-logout">
+                            <Link to="/marketplace">Go back to Search</Link>
+                            {/*Google Logout button is here*/}
+                            <div> <Logout/> </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
       
-        <section id = "post-book">
-            <div className = "container">
-                <form className = "post-book-form" onSubmit = {this.handleSubmit}>
-                    <div>
-                        <input className="input-box" type="text" name="" placeholder="Name of the book" value = {this.state.item_name} onChange = {this.handleChangeItemName}/>
-                    </div>
-                    
-                    <div>
-                        <input className="input-box" type="text" name="" placeholder="Name of the Author" value = {this.state.author_name} onChange = {this.handleChangeAuthorName}/>
-                    </div>
-                    
-                    <div>
-                        <input className="input-box" type="text" name="" placeholder="Category" value = {this.state.category} onChange = {this.handleChangeCategory}/>
-                    </div>
-                    
-                    <div className = "input-course-isbn">
+            <section id = "post-book">
+                <div className = "container">
+                    <form className = "post-book-form" onSubmit = {this.handleSubmit}>
                         <div>
-                            <input className="input-box" type="text" name="" placeholder="Morgan Course Name" value = {this.state.course_name} onChange = {this.handleChangeCourseName}/>
-                        </div>
-                        <div>
-                            <input className="input-box" type="text" name="" placeholder="ISBN" value = {this.state.isbn} onChange = {this.handleChangeISBN}/>
-                        </div>
-                    </div>
-                    <div className = "input-price-condition">
-                        <div>
-                            <input className="input-box" type="text" name="" placeholder="Price" value = {this.state.price} onChange = {this.handleChangePrice}/>
-                        </div>
-                        <div>
-                            <input className="input-box" type="text" name="" placeholder="Condition of the book" value = {this.state.condition} onChange = {this.handleChangeCondition}/>
+                            <input className="input-box" type="text" name="" placeholder="Name of the book" value = {this.state.item_name} onChange = {this.handleChangeItemName}/>
                         </div>
                         
-                    </div>
-                    <div>
-                        <textarea className="input-textarea input-box" cols="50" rows="2" placeholder = "Enter some description of your textbook..." value = {this.state.description} onChange = {this.handleChangeDescription}></textarea>
-                    </div>
-                    
-                    <div>
-                        <button className="post-book-submit">Submit</button>
-                    </div>
-                    {/*Upload file option is here*/}
-                    <div>
-                        <input type="file" onChange={this.fileChangedHandler}/>
-                        <button onClick={this.uploadHandler}>Upload!</button>
-                    </div>
-                </form>
-            </div>
-        </section>
+                        <div>
+                            <input className="input-box" type="text" name="" placeholder="Name of the Author" value = {this.state.author_name} onChange = {this.handleChangeAuthorName}/>
+                        </div>
+                        
+                        <div>
+                            <input className="input-box" type="text" name="" placeholder="Category" value = {this.state.category} onChange = {this.handleChangeCategory}/>
+                        </div>
+                        
+                        <div className = "input-course-isbn">
+                            <div>
+                                <input className="input-box" type="text" name="" placeholder="Morgan Course Name" value = {this.state.course_name} onChange = {this.handleChangeCourseName}/>
+                            </div>
+                            <div>
+                                <input className="input-box" type="text" name="" placeholder="ISBN" value = {this.state.isbn} onChange = {this.handleChangeISBN}/>
+                            </div>
+                        </div>
+                        <div className = "input-price-condition">
+                            <div>
+                                <input className="input-box" type="text" name="" placeholder="Price" value = {this.state.price} onChange = {this.handleChangePrice}/>
+                            </div>
+                            <div>
+                                <input className="input-box" type="text" name="" placeholder="Condition of the book" value = {this.state.condition} onChange = {this.handleChangeCondition}/>
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <textarea className="input-textarea input-box" cols="50" rows="2" placeholder = "Enter some description of your textbook..." value = {this.state.description} onChange = {this.handleChangeDescription}></textarea>
+                        </div>
+                        
+                        <div>
+                            <button className="post-book-submit">Submit</button>
+                        </div>
+                        {/*Upload file option is here*/}
+                        <div>
+                            <input type="file" onChange={this.fileChangedHandler}/>
+                            <button onClick={this.uploadHandler}>Upload!</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        
         {/*Footer component is here*/}
         <Footer/>
       </div>
