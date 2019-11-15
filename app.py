@@ -71,8 +71,13 @@ def on_new_search(search_data):
     # List that will carry all items to be rendered for display.
     items_to_render = []
     
+    # Will render every item from the database if user inputs nothing and click search
+    if (extracted_search_data == ""):
+        items_to_render = all_item[:]
+        print("After empty string:", items_to_render)
+    
     #If user searched for a book using the isbn number, check if the isbn is in the database
-    if extracted_search_data.isdigit():
+    elif extracted_search_data.isdigit():
         search_isbn = extracted_search_data
         for single_item1 in all_item:
             if single_item1[4] == str(search_isbn):
@@ -86,6 +91,8 @@ def on_new_search(search_data):
             if single_item2[0] == str(search_name):
                 items_to_render.append(single_item2)
         print("Items to be rendered2:",items_to_render)
+        
+        
         
     # Sending a list('items_to_render') to client for display
     socketio.emit('be rendered', {'render_list': items_to_render})
