@@ -106,4 +106,7 @@ dist
 # Package lock file
 package-lock.json
 
-.pyc
+# Project specific
+.gitgnore
+node_modules
+*.pyc
