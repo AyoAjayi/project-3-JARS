@@ -5,6 +5,7 @@ import { Marketplace } from './Marketplace';
 import { Header } from './Header';
 import { Login } from './Login';
 import { Footer } from './Footer';
+import { Socket } from './Socket';
 
 
 
@@ -19,14 +20,18 @@ export class Home extends React.Component {
       loggedIn : false
     };
     
-    this.ClickedLogIn = () => {
-      this.setState({loggedIn: true});
-    };
+    // For 'Begin Shopping" button'
+    // this.ClickedLogIn = () => {
+    //   this.setState({loggedIn: true});
+    // };
   }
   render() {
-    if (this.state.loggedIn === true) {
-      return <Redirect to='/marketplace' />;
-    }
+    // For 'Begin Shopping" button'
+    // if (this.state.loggedIn === true) {
+    //   return <Redirect to='/marketplace' />;
+    // }
+
+    
     return (
       // Added a class for the login component to center it to the middle of the webpage. Css for wrapper class is in style.css file
       <div className = "home-content">
@@ -49,9 +54,11 @@ export class Home extends React.Component {
         
         <Login/>
         
+        {/*
         <div className = "login-button">
           <button onClick = {this.ClickedLogIn} >Begin Shopping</button>
         </div>
+        */}
         
         {/*Footer component is here*/}
         <Footer/>
