@@ -1,10 +1,6 @@
-import flask_sqlalchemy,app
-import flask
-import flask_socketio
-import os
+import os,app,flask,flask_socketio,flask_sqlalchemy
 
 app.app.config['SQLALCHEMY_DATABASE_URI'] =   os.getenv('DATABASE_URL')
-
 
 # app.app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://projectjars:ProjectJars2019@localhost/postgres'
 db = flask_sqlalchemy.SQLAlchemy(app.app)
