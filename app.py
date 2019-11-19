@@ -1,5 +1,9 @@
 import os, flask, flask_socketio, flask_sqlalchemy
 
+# For authenticating google token on backend
+from google.oauth2 import id_token
+from google.auth.transport import requests
+
 
 app = flask.Flask(__name__)
 import models  # It needs to be here
@@ -11,20 +15,60 @@ def hello():
 
 
 # ***** Body *****
-@socketio.on('login')
-def on_login(response):
-    #These are global variables because we might need them
-    global seller_name
-    global seller_contact
+
+
+# @socketio.on('login')
+# def on_login(response):
+#     #These are global variables because we might need them
+#     global seller_name
+#     global seller_contact
     
-    seller_name = str(response['data']['profileObj']['name'])
-    seller_contact = str(response['data']['profileObj']['email'])
-    # image = str(response['data']['profileObj']['imageUrl'])
-    # print(image)
-    # print(name)
-    # socketio.emit('username_received', {'user_name': name})
-    # socketio.emit('image_received', {'imageUrl': image})
-    # socketio.emit('email_received', {'user_email': email})
+#     seller_name = str(response['data']['profileObj']['name'])
+#     seller_contact = str(response['data']['profileObj']['email'])
+#     # image = str(response['data']['profileObj']['imageUrl'])
+#     # print(image)
+#     # print(name)
+#     # socketio.emit('username_received', {'user_name': name})
+#     # socketio.emit('image_received', {'imageUrl': image})
+#     # socketio.emit('email_received', {'user_email': email})
+    
+    
+# *** Server received the google 'id_token' sent from client (Login.js)
+@socketio.on('google token')
+def on_google_token_id(token):
+    print ("Got an event for GOOGLE TOKEN ID: "+ str(token))
+    try:
+        # Specify the CLIENT_ID of the app that accesses the backend:
+        # To validate an ID token in Python, using the verify_oauth2_token function
+        CLIENT_ID = '433826711359-r31ipjdt01vfjhgbdi1go9b1508c7t8g.apps.googleusercontent.com'
+        idinfo = id_token.verify_oauth2_token(token['google_user_token'], requests.Request(), CLIENT_ID)
+    
+        if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
+            raise ValueError('Wrong issuer.')
+    
+        # ID token is valid. Get the user's Google Account ID from the decoded token.
+        userid = idinfo['sub']
+        
+        # In order to insert on database and send it to client later + making global variable
+        global server_received_imageurl
+        server_received_imageurl = idinfo['picture']
+        
+        global server_received_name
+        server_received_name = idinfo['name']
+        
+        global server_received_email
+        server_received_email = idinfo['email']
+        
+        
+        print("************")
+        print("Name: "+ idinfo['name'])
+        print("Imageurl: "+ idinfo['picture'])
+        print("Email: "+ idinfo['email'])
+        print("************")
+    
+    except ValueError:
+        # Invalid token
+        print("Invalid token")
 
 
 @socketio.on('connect')
@@ -112,7 +156,8 @@ def on_new_submit(submit_data):
     price = submit_data['price']
     condition = submit_data['condition']
     description = submit_data['description']
-    data = models.Message(textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact)
+    # server_received_name and server_received_email are coming from google google login button on backend
+    data = models.Message(textbook_name, category, author_name, course_name, isbn, price, server_received_name, condition, description, server_received_email)
     models.db.session.add(data)
     models.db.session.commit()
     
