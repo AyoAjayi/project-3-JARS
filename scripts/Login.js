@@ -58,6 +58,9 @@ export class Login extends React.Component {
             console.log(response);
             // This will set 'loggedIn' to true
             this.setState({loggedIn: true});
+            Socket.emit('google token', {
+                'google_user_token': user.getAuthResponse().id_token
+            });
         }
     };
     
