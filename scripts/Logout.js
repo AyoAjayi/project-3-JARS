@@ -11,25 +11,35 @@ export class Logout extends React.Component {
     super(props);
     
     this.state = {
-      loggedIn : false
+      loggedOut : false
     }
     
-    this.setLoggedIn = () => {
-      this.setState({loggedIn: true})
+    this.setLoggedOut = () => {
+      this.setState({loggedOut: true})
     }
   }
   render() {
     const logout = (response) => {
-      console.log("User just got logged out.")
+      this.setState({loggedOut: true});
+      console.log("User just got logged out: ", this.state.loggedOut);
     }
+    
+    if (this.state.loggedOut === true){
+      console.log("Inside the function");
+      return <Redirect to='/' />;
+    }
+    else {
+      console.log("Not logged out!")
+    }
+    
     return (
       // Added a class for the login component to center it to the middle of the webpage. Css for wrapper class is in style.css file
       <div className = "logout-wrapper">
           <GoogleLogout
-          clientId="433826711359-r31ipjdt01vfjhgbdi1go9b1508c7t8g.apps.googleusercontent.com"
-          buttonText="Logout"
-          onLogoutSuccess={logout}
-          theme = 'dark'
+            clientId="433826711359-r31ipjdt01vfjhgbdi1go9b1508c7t8g.apps.googleusercontent.com"
+            buttonText="Logout"
+            onLogoutSuccess={logout}
+            theme = 'dark'
           >
           </GoogleLogout>
       </div>
