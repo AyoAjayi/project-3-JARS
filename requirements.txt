@@ -3,3 +3,4 @@ flask_socketio
 Flask-SQLAlchemy==2.1
 psycopg2-binary
 google-api-python-client
+requests
