@@ -15,22 +15,6 @@ def hello():
 
 
 # ***** Body *****
-
-
-# @socketio.on('login')
-# def on_login(response):
-#     #These are global variables because we might need them
-#     global seller_name
-#     global seller_contact
-    
-#     seller_name = str(response['data']['profileObj']['name'])
-#     seller_contact = str(response['data']['profileObj']['email'])
-#     # image = str(response['data']['profileObj']['imageUrl'])
-#     # print(image)
-#     # print(name)
-#     # socketio.emit('username_received', {'user_name': name})
-#     # socketio.emit('image_received', {'imageUrl': image})
-#     # socketio.emit('email_received', {'user_email': email})
     
     
 # *** Server received the google 'id_token' sent from client (Login.js)
@@ -142,6 +126,10 @@ def on_new_search(search_data):
     socketio.emit('be rendered', {'render_list': items_to_render})
     print("Render list sent to client.")
     
+    # Closing the connection with database in order to avoid 'QueuePool limit' error.
+    models.db.session.close()
+
+    
     
 # *** Server received a new submit event sent by client(Submit.js) ***
 @socketio.on('new submit')
@@ -160,6 +148,8 @@ def on_new_submit(submit_data):
     data = models.Message(textbook_name, category, author_name, course_name, isbn, price, server_received_name, condition, description, server_received_email)
     models.db.session.add(data)
     models.db.session.commit()
+    # Closing the connection with database in order to avoid 'QueuePool limit' error.
+    models.db.session.close()
     
 
     
