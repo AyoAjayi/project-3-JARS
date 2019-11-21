@@ -4,6 +4,9 @@ import os, flask, flask_socketio, flask_sqlalchemy
 from google.oauth2 import id_token
 from google.auth.transport import requests
 
+# Time library
+from time import gmtime, strftime
+
 
 app = flask.Flask(__name__)
 import models  # It needs to be here
@@ -108,19 +111,35 @@ def on_new_search(search_data):
     elif extracted_search_data.isdigit():
         search_isbn = extracted_search_data
         for single_item1 in all_item:
-            if single_item1[4] == str(search_isbn):
+            if (single_item1[4] == str(search_isbn)):
                 items_to_render.append(single_item1)
         print("Items to be rendered1:",items_to_render)
                     
     #If user searched for a book used the textbook name, check if the textbook name is in the database.               
     else:
-        search_name = extracted_search_data
+        # search_name = extracted_search_data
+        # for single_item2 in all_item:
+        #     if single_item2[0] == str(search_name):
+        #         items_to_render.append(single_item2)
+        # print("Items to be rendered2:",items_to_render)
+        
+        search_name = extracted_search_data.lower()
+        search_list = search_name.split(" ")
+        print("Search List: ", search_list)
         for single_item2 in all_item:
-            if single_item2[0] == str(search_name):
+            lw_item_name = single_item2[0].lower()
+            # If we got exact match of textbook name on database
+            print("Single item: ", lw_item_name)
+            if (search_name == lw_item_name):
                 items_to_render.append(single_item2)
-        print("Items to be rendered2:",items_to_render)
-        
-        
+                print("Got exact match!")
+            # If we don't have any exact match on database
+            else:
+                lw_name_list = lw_item_name.split(" ")
+                for search_letter in search_list:
+                    if (single_item2 not in items_to_render):
+                        if (search_letter in lw_name_list):
+                            items_to_render.append(single_item2)
         
     # Sending a list('items_to_render') to client for display
     socketio.emit('be rendered', {'render_list': items_to_render})
@@ -135,6 +154,9 @@ def on_new_search(search_data):
 @socketio.on('new submit')
 def on_new_submit(submit_data):
     print ("Got an event for new submit with data: "+ str(submit_data))
+    # Getting posted time from server
+    posted_time = strftime("%a, %d %b %Y %H:%M:%S", gmtime())
+    print(posted_time)
     # textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact
     textbook_name = submit_data['item_name']
     category = submit_data['category']
@@ -143,7 +165,8 @@ def on_new_submit(submit_data):
     isbn = submit_data['isbn']
     price = submit_data['price']
     condition = submit_data['condition']
-    description = submit_data['description']
+    # Attaching posted timestamp along with description
+    description = str(submit_data['description']) + "   [Posted on: " + str(posted_time) + "]"
     # server_received_name and server_received_email are coming from google google login button on backend
     data = models.Message(textbook_name, category, author_name, course_name, isbn, price, server_received_name, condition, description, server_received_email)
     models.db.session.add(data)
