@@ -4,7 +4,7 @@ import { Nav } from './Nav';
 import { Footer } from './Footer';
 import { Socket } from './Socket';
 import { Logout } from './Logout';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 export class Marketplace extends React.Component {
@@ -13,7 +13,9 @@ export class Marketplace extends React.Component {
     this._isMounted = false;
     this.state = {
         'be_rendered': [],
-        search_input : ''
+        search_input : '',
+        clicked_contact_seller: false,
+        selected_contact: ''
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,6 +56,7 @@ export class Marketplace extends React.Component {
     let final_render_list = this.state.be_rendered;
     console.log("Final render list:",final_render_list);
     
+    
     return (
       <div>
         {/*Header component is here*/}
@@ -89,7 +92,7 @@ export class Marketplace extends React.Component {
                 <div className = "container">
                     <div className = "listing">
                     
-                        { final_render_list.map (each_list =>
+                        { final_render_list.map ((each_list, index) =>
                         <li key = {each_list[0]} className = "unit-listing">
                             <h4 className = "book-name">{each_list[0]}</h4>
                             <p className = "author">by {each_list[2]}</p>
@@ -113,9 +116,22 @@ export class Marketplace extends React.Component {
                                 <div className = "Seller">
                                     <p> Seller: {each_list[6]} </p>
                                 </div>
+                                {/*
                                 <div className = "contact-seller">
-                                    <button>Contact Seller</button>
+                                    <button id = "contact-button" onClick = {this.ClickedContactSeller} value = {each_list[9]} >Contact Seller</button>
                                 </div>
+                                */}
+                                
+                                <div className = "contact-seller">
+                                    <button id = "contact-button" onClick = {() => {
+                                        Socket.emit('selected item', {'email': each_list[9], 'name': each_list[6], 'item':each_list[0]});
+                                        console.log("Selected item just got sent to server.");
+                                        return <Redirect to = '/sell-a-book'/>;
+                                    }} >
+                                        Contact Seller
+                                    </button>
+                                </div>
+
                             </div>
                             <p className = "description"> {each_list[8]}</p>
                         </li> )}
