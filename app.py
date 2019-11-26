@@ -7,6 +7,10 @@ from google.auth.transport import requests
 # Time library
 from time import gmtime, strftime
 
+# For gmail smtp library
+import smtplib
+
+
 
 app = flask.Flask(__name__)
 import models  # It needs to be here
@@ -141,6 +145,8 @@ def on_new_search(search_data):
                         if (search_letter in lw_name_list):
                             items_to_render.append(single_item2)
         
+        
+        
     # Sending a list('items_to_render') to client for display
     socketio.emit('be rendered', {'render_list': items_to_render})
     print("Render list sent to client.")
@@ -173,9 +179,42 @@ def on_new_submit(submit_data):
     models.db.session.commit()
     # Closing the connection with database in order to avoid 'QueuePool limit' error.
     models.db.session.close()
-    
 
+
+# *** Server received a new search event sent by client(Marketplace.js) when contact seller button is clicked ***
+@socketio.on('selected item')
+def on_new_click(seller_contact):
+    print ("Got an event for new selected contact: "+ str(seller_contact))
     
+    # Extracted seller contact infor is the value of the user's search input
+    abs_seller_email = str(seller_contact["email"])
+    abs_seller_name = str(seller_contact["name"])
+    abs_item_name = str(seller_contact["item"])
+    print("******************")
+    print("Seller email: ", abs_seller_email)
+    print("Seller name: ", abs_seller_name)
+    print("Item name: ", abs_item_name)
+    print("******************")
+    abs_first_name = (abs_seller_name.split(" "))[0]
+    
+    # *************
+    # For gmail emailing system
+    content = "Hello " + abs_first_name + ",\n" + server_received_name + " is interested on your item; '" + abs_item_name + "' and would like to know more about it. Please contact him/her on this email: " + server_received_email + "." + "\n\nThanks for using JARS."
+    sender = "projectjars2019@gmail.com"
+    recipient = abs_seller_email
+    mail = smtplib.SMTP('smtp.gmail.com', 587)
+    mail.ehlo() #Identify computer
+    mail.starttls() #Transport layer security
+    username = os.getenv('GMAIL_USER_NAME')
+    password = os.getenv('GMAIL_PASSWORD')
+    mail.login(username, password)
+    header = "To: " + recipient + "\n" + "From: " + sender + "\n" + "Subject: Someone interested on your listing, \n"
+    content = header + content
+    mail.sendmail(sender, recipient, content)
+    mail.close()
+    print("***************Email has been sent to the recipient**************")
+    # *************
+
 
 # ***** Footer *****
 
