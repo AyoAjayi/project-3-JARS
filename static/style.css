@@ -186,9 +186,9 @@ body {
 /*    background: yellow;*/
 /*}*/
 
-#listing-section{
-    overflow: auto;
-}
+/*#listing-section{*/
+/*    overflow: auto;*/
+/*}*/
 
 #listing-section .listing{
     padding: 10px 20px 10px 20px;
@@ -216,25 +216,109 @@ body {
 
 /*Submit Page*/
 
-#post-book .post-book-form .input-course-isbn{
+#post-book .post-book-form{
+    margin-top: 30px;
+}
+
+.post-book-form .author-category{
     display: flex;
     justify-content: space-between;
 }
-#post-book .post-book-form .input-price-condition{
+.post-book-form .course-isbn{
+    display: flex;
+    justify-content: space-between;
+}
+.post-book-form .price-condition{
     display: flex;
     justify-content: space-between;
 }
 
+/*.post-book-form{*/
+/*    display: grid;*/
+/*    grid-template-areas:*/
+/*        "name name"*/
+/*        "author category"*/
+/*        "course isbn"*/
+/*        "price condition"*/
+/*        "textarea textarea";*/
+/*    grid-gap: 5px;*/
+/*}*/
 
-.input-box{
-    margin-bottom: 10px;
-    padding: 4px 5px 4px 5px;
-    border: 0.5px grey solid;
+/*.post-book-form .name-input{*/
+/*    grid-area: name;*/
+/*}*/
+/*.post-book-form .author-input{*/
+/*    grid-area: author;*/
+/*}*/
+/*.post-book-form .category-input{*/
+/*    grid-area: category;*/
+/*}*/
+/*.post-book-form .course-input{*/
+/*    grid-area: course;*/
+/*}*/
+/*.post-book-form .isbn-input{*/
+/*    grid-area: isbn;*/
+/*}*/
+/*.post-book-form .price-input{*/
+/*    grid-area: price;*/
+/*}*/
+/*.post-book-form .condition-input{*/
+/*    grid-area: condition;*/
+/*}*/
+/*.post-book-form .textarea-input{*/
+/*    grid-area: textarea;*/
+/*}*/
+
+
+.post-book-form .input-box{
+    margin-bottom: 15px;
+    padding: 6px 5px 6px 5px;
+    border: 0.8px #4CEADA solid;
+    border-radius: 5px;
+    font-size: 0.9rem;
 }
-.input-box:focus{
-    border: 0.8px #137F80 solid;
-    border-bottom: 2px #137F80 solid;
+
+/*.post-book-form .input-box:hover{*/
+/*    border-color: rgb(76, 234, 218);*/
+/*}*/
+
+
+.post-book-form .input-box:focus{
+    outline: none;
+    border: 1.5px #4CEADA dashed;
 }
+
+.author-input,
+.category-input,
+.course-input,
+.isbn-input,
+.price-input,
+.condition-input{
+    width: 500px;
+}
+
+.name-input,
+.textarea-input{
+    width: 100%;
+}
+
+#post-book .post-book-submit{
+    padding: 5px 10px 5px 10px;
+    border: 1px #4CEADA solid;
+    background: #656565;
+    color: #4CEADA;
+    font-weight: 600;
+    margin-top: 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+#post-book .post-book-submit:hover{
+    background: #353739;
+}
+
 
 #common-footer{
     color: white;

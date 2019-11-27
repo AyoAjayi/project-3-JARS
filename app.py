@@ -4,6 +4,13 @@ import os, flask, flask_socketio, flask_sqlalchemy
 from google.oauth2 import id_token
 from google.auth.transport import requests
 
+# Time library
+from time import gmtime, strftime
+
+# For gmail smtp library
+import smtplib
+
+
 
 app = flask.Flask(__name__)
 import models  # It needs to be here
@@ -108,17 +115,35 @@ def on_new_search(search_data):
     elif extracted_search_data.isdigit():
         search_isbn = extracted_search_data
         for single_item1 in all_item:
-            if single_item1[4] == str(search_isbn):
+            if (single_item1[4] == str(search_isbn)):
                 items_to_render.append(single_item1)
         print("Items to be rendered1:",items_to_render)
                     
     #If user searched for a book used the textbook name, check if the textbook name is in the database.               
     else:
-        search_name = extracted_search_data
+        # search_name = extracted_search_data
+        # for single_item2 in all_item:
+        #     if single_item2[0] == str(search_name):
+        #         items_to_render.append(single_item2)
+        # print("Items to be rendered2:",items_to_render)
+        
+        search_name = extracted_search_data.lower()
+        search_list = search_name.split(" ")
+        print("Search List: ", search_list)
         for single_item2 in all_item:
-            if single_item2[0] == str(search_name):
+            lw_item_name = single_item2[0].lower()
+            # If we got exact match of textbook name on database
+            print("Single item: ", lw_item_name)
+            if (search_name == lw_item_name):
                 items_to_render.append(single_item2)
-        print("Items to be rendered2:",items_to_render)
+                print("Got exact match!")
+            # If we don't have any exact match on database
+            else:
+                lw_name_list = lw_item_name.split(" ")
+                for search_letter in search_list:
+                    if (single_item2 not in items_to_render):
+                        if (search_letter in lw_name_list):
+                            items_to_render.append(single_item2)
         
         
         
@@ -135,6 +160,9 @@ def on_new_search(search_data):
 @socketio.on('new submit')
 def on_new_submit(submit_data):
     print ("Got an event for new submit with data: "+ str(submit_data))
+    # Getting posted time from server
+    posted_time = strftime("%a, %d %b %Y %H:%M:%S", gmtime())
+    print(posted_time)
     # textbook_name, category, author_name, course_name, isbn, price, seller_name, condition, description, seller_contact
     textbook_name = submit_data['item_name']
     category = submit_data['category']
@@ -143,19 +171,57 @@ def on_new_submit(submit_data):
     isbn = submit_data['isbn']
     price = submit_data['price']
     condition = submit_data['condition']
-    description = submit_data['description']
+    # Attaching posted timestamp along with description
+    description = str(submit_data['description']) + "   [Posted on: " + str(posted_time) + "]"
     # server_received_name and server_received_email are coming from google google login button on backend
     data = models.Message(textbook_name, category, author_name, course_name, isbn, price, server_received_name, condition, description, server_received_email)
     models.db.session.add(data)
     models.db.session.commit()
     # Closing the connection with database in order to avoid 'QueuePool limit' error.
     models.db.session.close()
-    
 
+<<<<<<< HEAD
     
 #GMAIL API LOGIC
 
 #516894204723-u08nft1ukof2evb6i38fb4frjjn7s8a2.apps.googleusercontent.com
+=======
+
+# *** Server received a new search event sent by client(Marketplace.js) when contact seller button is clicked ***
+@socketio.on('selected item')
+def on_new_click(seller_contact):
+    print ("Got an event for new selected contact: "+ str(seller_contact))
+    
+    # Extracted seller contact infor is the value of the user's search input
+    abs_seller_email = str(seller_contact["email"])
+    abs_seller_name = str(seller_contact["name"])
+    abs_item_name = str(seller_contact["item"])
+    print("******************")
+    print("Seller email: ", abs_seller_email)
+    print("Seller name: ", abs_seller_name)
+    print("Item name: ", abs_item_name)
+    print("******************")
+    abs_first_name = (abs_seller_name.split(" "))[0]
+    
+    # *************
+    # For gmail emailing system
+    content = "Hello " + abs_first_name + ",\n" + server_received_name + " is interested on your item; '" + abs_item_name + "' and would like to know more about it. Please contact him/her on this email: " + server_received_email + "." + "\n\nThanks for using JARS."
+    sender = "projectjars2019@gmail.com"
+    recipient = abs_seller_email
+    mail = smtplib.SMTP('smtp.gmail.com', 587)
+    mail.ehlo() #Identify computer
+    mail.starttls() #Transport layer security
+    username = os.getenv('GMAIL_USER_NAME')
+    password = os.getenv('GMAIL_PASSWORD')
+    mail.login(username, password)
+    header = "To: " + recipient + "\n" + "From: " + sender + "\n" + "Subject: Someone interested on your listing, \n"
+    content = header + content
+    mail.sendmail(sender, recipient, content)
+    mail.close()
+    print("***************Email has been sent to the recipient**************")
+    # *************
+
+>>>>>>> 85e353fa88812fa78ccf23af98a586e67bb2dc02
 
 # ***** Footer *****
 
