@@ -69,7 +69,7 @@ export class Marketplace extends React.Component {
                 <div className = "nav-container">
                     <div className = "big-bar">
                         <div className = "logo">
-                            <a href="#"><span className = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
+                            <a href="#"><span className = "J">J</span><span className = "A">A</span><span className = "R">R</span><span className = "S">S</span></a>
                         </div>
                         <form className = "search" onSubmit = {this.handleSubmit}>
                             <div>
@@ -80,7 +80,7 @@ export class Marketplace extends React.Component {
                             </div>
                         </form>
                         <div className = "sell-logout">
-                            <Link to="/sell-a-book">Sell a Book</Link>
+                            <Link className = "sell-link" to="/sell-a-book">Sell a Book</Link>
                             {/*Google Logout button is here*/}
                             <div> <Logout/> </div>
                         </div>
@@ -125,8 +125,8 @@ export class Marketplace extends React.Component {
                                 <div className = "contact-seller">
                                     <button id = "contact-button" onClick = {() => {
                                         Socket.emit('selected item', {'email': each_list[9], 'name': each_list[6], 'item':each_list[0]});
+                                        alert("Thank you for your inquiry! The seller, "+ each_list[6] + " has recieved your request and will get back to you shortly.");
                                         console.log("Selected item just got sent to server.");
-                                        return <Redirect to = '/sell-a-book'/>;
                                     }} >
                                         Contact Seller
                                     </button>
