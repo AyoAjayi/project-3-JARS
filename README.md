@@ -4,8 +4,7 @@
 
 ## Description
 
-We aim to deliver an app that allows Morgan State students to buy and sell textbooks with ease. This app will allow users to  buy or sell textbooks after being logged in using google. Sellers  will be able to create a profile and post books they have to sell and will be given the means to contact a buyer in order to set up a transaction. Sellers will provide their Morgan email address with the item listing for initial point of contact to make a transaction. Buyers will be able to search for books through our web app.
-At this point of time, JARS is under development cycle (implementation phase) therefore it is only the layout of our webapp.
+We have a developed a web app that allows Morgan State students to buy and sell textbooks with ease. Students who want to buy books can log in using their google emails and navigate to the store to view the currently added books. Students can also post books they would like to sell. JARS has set up a means for the buyer to contact the seller in order to make a purchase.
 
 ## Getting started
 - Install Flask
@@ -22,13 +21,8 @@ At this point of time, JARS is under development cycle (implementation phase) th
 - Additional libraries- flask_socketio, flask_sqlalchemy, psycopg2, requests, google.oauth2
 
 
-## Known Issues
-- After user being logged in through Google, google login button does not automatically redirect the user to the next page (marketplace page). For deomnstration purpose, we have included a login button below the google login button to redirect.
-- Our current database is not optimal for differentiating between buyers and sellers and we might run into issues when scaling the database to handle a lot of people. We need a better data model
-- The way we are retrieving data from our database is by querying the database at once. This is not optimal.
-- We have an upload picture button for the user to upload their textbooks. This button is not currently storing the photos the user uploads.
-- Our search field at times, does not let user conduct searches after another.
-- The user should be able to switch back and forth between multiple pages
+## Future Improvements
+- We hope to allow users to upload photos of their textbooks so that students interested in purchasing books can view the textbooks
 
 ## Resolution to Issues
 - We can make our web app to redirect to marketplace page after successful login from user using react router.
