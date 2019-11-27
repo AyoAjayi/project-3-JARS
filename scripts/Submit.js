@@ -116,11 +116,11 @@ export class Submit extends React.Component {
                 <div className = "nav-container">
                     <div className = "big-bar">
                         <div className = "logo">
-                            <a href="#"><span className = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
+                            <a href="#"><span className = "J">J</span><span className = "A">A</span><span className = "R">R</span><span className = "S">S</span></a>
                         </div>
 
                         <div className = "sell-logout">
-                            <Link to="/marketplace">Go back to Search</Link>
+                            <Link className = "sell-link" to="/marketplace">Go back to Search</Link>
                             {/*Google Logout button is here*/}
                             <div> <Logout/> </div>
                         </div>
@@ -134,7 +134,7 @@ export class Submit extends React.Component {
                         <div>
                             <input className="input-box name-input" type="text" name="name" size = "100" placeholder="Name of the book" value = {this.state.item_name} onChange = {this.handleChangeItemName}/>
                         </div>
-                        <div class = "author-category">
+                        <div className = "author-category">
                             <div>
                                 <input className="input-box author-input" type="text" name="author" size = "50" placeholder="Name of the Author" value = {this.state.author_name} onChange = {this.handleChangeAuthorName}/>
                             </div>
@@ -144,7 +144,7 @@ export class Submit extends React.Component {
                             </div>
                         </div>
                         
-                        <div class = "course-isbn">
+                        <div className = "course-isbn">
                             <div>
                                 <input className="input-box course-input" type="text" name="course" size = "50" placeholder="Morgan Course Name" value = {this.state.course_name} onChange = {this.handleChangeCourseName}/>
                             </div>
@@ -154,7 +154,7 @@ export class Submit extends React.Component {
                             </div>
                         </div>
                         
-                        <div class = "price-condition">
+                        <div className = "price-condition">
                             <div>
                                 <input className="input-box price-input" type="text" name="price" size = "50" placeholder="Price" value = {this.state.price} onChange = {this.handleChangePrice}/>
                             </div>
@@ -165,14 +165,16 @@ export class Submit extends React.Component {
                         </div>
                         
                         <div>
-                            <textarea className="textarea-input input-box" cols="50" rows="2" name = "textarea" size = "50" placeholder = "Enter some description of your textbook..." value = {this.state.description} onChange = {this.handleChangeDescription}></textarea>
+                            <textarea className="textarea-input input-box" cols="100" rows="2" name = "textarea" size = "50" placeholder = "Enter some description of your textbook..." value = {this.state.description} onChange = {this.handleChangeDescription}></textarea>
                         </div>
                         
                         {/*Upload file option is here*/}
-                        <div name = "file" class = "file-input">
+                        {/*
+                        <div name = "file" className = "file-input">
                             <input type="file" onChange={this.fileChangedHandler}/>
                             <button onClick={this.uploadHandler}>Upload!</button>
                         </div>
+                        */}
                         
                         {/*Submit button*/}
                         <div>
