@@ -138,6 +138,12 @@ body {
 #marketplace-navbar .tiny-links .helper-links{
     display: flex;
 }
+
+#marketplace-navbar .tiny-links .helper-links a:hover{
+    text-decoration: underline;
+    transition: all 0.5s;
+}
+
 #marketplace-navbar .tiny-links .helper-links .help{
     margin-right : 30px;
 }
@@ -180,6 +186,18 @@ body {
     margin-right: 10px;
 }
 
+#marketplace-navbar .big-bar .sell-logout .sell-link{
+    padding-top: 7px;
+    font-size: 1.1rem;
+}
+
+#marketplace-navbar .big-bar .sell-logout .sell-link:hover{
+    /*color: #46E0DE;*/
+    color: #19E3F9;
+    text-decoration: underline;
+    transition: all 0.5s;
+}
+
 /*Listing section*/
 
 /*#listing-section .unit-listing{*/
@@ -211,6 +229,21 @@ body {
 #listing-section .unit-listing .seller-contact-seller{
     display: flex;
     justify-content: space-between;
+}
+
+#listing-section .unit-listing .seller-contact-seller button{
+    margin-top: 2px;
+    padding: 2px 5px 2px 5px;
+    background: #656565;
+    color: #4CEADA;
+    font-size: 1rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+#listing-section .unit-listing .seller-contact-seller button:hover{
+    background: #353739;
 }
 
 
@@ -273,9 +306,13 @@ body {
 .post-book-form .input-box{
     margin-bottom: 15px;
     padding: 6px 5px 6px 5px;
-    border: 0.8px #4CEADA solid;
+    border: 0.9px #3665F3 solid;
     border-radius: 5px;
     font-size: 0.9rem;
+}
+
+.post-book-form .textarea-input{
+    font-size:1.1rem;
 }
 
 /*.post-book-form .input-box:hover{*/
@@ -285,7 +322,7 @@ body {
 
 .post-book-form .input-box:focus{
     outline: none;
-    border: 1.5px #4CEADA dashed;
+    border: 1.5px #3665F3 dashed;
 }
 
 .author-input,
@@ -323,16 +360,26 @@ body {
 #common-footer{
     color: white;
     text-align: center;
-    padding: 5px 5px 5px 5px;
+    padding: 0 5px 5px 1px;
     background: #09222A;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
 }
+
+#common-footer .copyright{
+    font-size: 0.85rem;
+}
+
 #common-footer a{
     color: white;
-    font-size: 0.85rem;
+    font-size: 0.80rem;
+}
+
+#common-footer a:hover{
+    text-decoration: underline;
+    transition: all 0.5s;
 }
 
 #common-footer .common-footer-links{
