@@ -20,7 +20,7 @@ export class Footer extends React.Component {
                         <a href="#">Policies</a>
                     </div>
                 </div>
-                <div>
+                <div className = "copyright">
                     <p>JARS &copy; 2019, All Rights Reserved</p>
                 </div>
             </footer>
