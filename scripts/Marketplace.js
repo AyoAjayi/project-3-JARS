@@ -29,12 +29,12 @@ export class Marketplace extends React.Component {
       
       Socket.on('be rendered', (data) => {
           if (this._isMounted){
-              this.setState({'be_rendered': data['render_list']})
+              this.setState({'be_rendered': data['render_list']});
           }
       });
-      console.log("*************")
+      console.log("*************");
       console.log('Render list state:', this.state);
-      console.log(this.state.be_rendered)
+      console.log(this.state.be_rendered);
   }
 
   handleSubmit(event){
@@ -69,7 +69,7 @@ export class Marketplace extends React.Component {
                 <div className = "nav-container">
                     <div className = "big-bar">
                         <div className = "logo">
-                            <a href="#"><span className = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
+                            <a href="#"><span className = "J">J</span><span className = "A">A</span><span className = "R">R</span><span className = "S">S</span></a>
                         </div>
                         <form className = "search" onSubmit = {this.handleSubmit}>
                             <div>
@@ -122,11 +122,12 @@ export class Marketplace extends React.Component {
                                 </div>
                                 */}
                                 
+                                
                                 <div className = "contact-seller">
                                     <button id = "contact-button" onClick = {() => {
+                                        alert("Thank you for your inquiry! The seller has recieved your request and will get back to you shortly!");
                                         Socket.emit('selected item', {'email': each_list[9], 'name': each_list[6], 'item':each_list[0]});
                                         console.log("Selected item just got sent to server.");
-                                        return <Redirect to = '/sell-a-book'/>;
                                     }} >
                                         Contact Seller
                                     </button>

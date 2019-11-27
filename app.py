@@ -1,3 +1,4 @@
+
 import os, flask, flask_socketio, flask_sqlalchemy
 
 # For authenticating google token on backend
@@ -9,8 +10,6 @@ from time import gmtime, strftime
 
 # For gmail smtp library
 import smtplib
-
-
 
 app = flask.Flask(__name__)
 import models  # It needs to be here
@@ -44,6 +43,7 @@ def on_google_token_id(token):
         global server_received_imageurl
         server_received_imageurl = idinfo['picture']
         
+        print(idinfo['name'])
         global server_received_name
         server_received_name = idinfo['name']
         
@@ -180,12 +180,6 @@ def on_new_submit(submit_data):
     # Closing the connection with database in order to avoid 'QueuePool limit' error.
     models.db.session.close()
 
-<<<<<<< HEAD
-    
-#GMAIL API LOGIC
-
-#516894204723-u08nft1ukof2evb6i38fb4frjjn7s8a2.apps.googleusercontent.com
-=======
 
 # *** Server received a new search event sent by client(Marketplace.js) when contact seller button is clicked ***
 @socketio.on('selected item')
@@ -211,8 +205,10 @@ def on_new_click(seller_contact):
     mail = smtplib.SMTP('smtp.gmail.com', 587)
     mail.ehlo() #Identify computer
     mail.starttls() #Transport layer security
-    username = os.getenv('GMAIL_USER_NAME')
-    password = os.getenv('GMAIL_PASSWORD')
+    # username = os.getenv('GMAIL_USER_NAME')
+    # password = os.getenv('GMAIL_PASSWORD')
+    username = "projectjars2019"
+    password = "Project-JARS2019"
     mail.login(username, password)
     header = "To: " + recipient + "\n" + "From: " + sender + "\n" + "Subject: Someone interested on your listing, \n"
     content = header + content
@@ -221,7 +217,6 @@ def on_new_click(seller_contact):
     print("***************Email has been sent to the recipient**************")
     # *************
 
->>>>>>> 85e353fa88812fa78ccf23af98a586e67bb2dc02
 
 # ***** Footer *****
 

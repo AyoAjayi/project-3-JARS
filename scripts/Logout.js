@@ -12,24 +12,24 @@ export class Logout extends React.Component {
     
     this.state = {
       loggedOut : false
-    }
+    };
     
     this.setLoggedOut = () => {
-      this.setState({loggedOut: true})
-    }
+      this.setState({loggedOut: true});
+    };
   }
   render() {
     const logout = (response) => {
       this.setState({loggedOut: true});
       console.log("User just got logged out: ", this.state.loggedOut);
-    }
+    };
     
     if (this.state.loggedOut === true){
       console.log("Inside the function");
       return <Redirect to='/' />;
     }
     else {
-      console.log("Not logged out!")
+      console.log("Not logged out!");
     }
     
     return (
