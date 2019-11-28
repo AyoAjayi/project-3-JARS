@@ -11,10 +11,7 @@ from time import gmtime, strftime
 # For gmail smtp library
 import smtplib
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e5820f75c278a0c3d334634d068f329ca6c9c4e1
 app = flask.Flask(__name__)
 import models  # It needs to be here
 socketio = flask_socketio.SocketIO(app)
@@ -209,15 +206,8 @@ def on_new_click(seller_contact):
     mail = smtplib.SMTP('smtp.gmail.com', 587)
     mail.ehlo() #Identify computer
     mail.starttls() #Transport layer security
-<<<<<<< HEAD
-    # username = os.getenv('GMAIL_USER_NAME')
-    # password = os.getenv('GMAIL_PASSWORD')
-    username = "projectjars2019"
-    password = "Project-JARS2019"
-=======
     username = os.getenv("GMAIL_USER_NAME")
     password = os.getenv("GMAIL_PASSWORD")
->>>>>>> e5820f75c278a0c3d334634d068f329ca6c9c4e1
     mail.login(username, password)
     header = "To: " + recipient + "\n" + "From: " + sender + "\n" + "Subject: Someone interested in your listing\n"
     content = header + content

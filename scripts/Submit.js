@@ -173,21 +173,12 @@ export class Submit extends React.Component {
                         </div>
                         
                         {/*Upload file option is here*/}
-<<<<<<< HEAD
                         {/*<div name = "file" class = "file-input">
                             <input type="file" onChange={this.fileChangedHandler}/>
                             <button onClick={this.uploadHandler}>Upload!</button>
                         </div>*/}
                        
                         
-=======
-                        {/*
-                        <div name = "file" className = "file-input">
-                            <input type="file" onChange={this.fileChangedHandler}/>
-                            <button onClick={this.uploadHandler}>Upload!</button>
-                        </div>
-                        */}
->>>>>>> e5820f75c278a0c3d334634d068f329ca6c9c4e1
                         
                         {/*Submit button*/}
                         <div>
