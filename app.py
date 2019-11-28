@@ -11,6 +11,10 @@ from time import gmtime, strftime
 # For gmail smtp library
 import smtplib
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e5820f75c278a0c3d334634d068f329ca6c9c4e1
 app = flask.Flask(__name__)
 import models  # It needs to be here
 socketio = flask_socketio.SocketIO(app)
@@ -199,18 +203,23 @@ def on_new_click(seller_contact):
     
     # *************
     # For gmail emailing system
-    content = "Hello " + abs_first_name + ",\n" + server_received_name + " is interested on your item; '" + abs_item_name + "' and would like to know more about it. Please contact him/her on this email: " + server_received_email + "." + "\n\nThanks for using JARS."
+    content = "Hello " + abs_first_name + ",\n\n" + server_received_name + " is interested in one of your listing (" + abs_item_name + ") at JARS and would like to know more about it. Please contact him/her at this email: " + server_received_email + "." + "\n\nThanks for using JARS." + "\n\nSincerely,\nJARS Team"
     sender = "projectjars2019@gmail.com"
     recipient = abs_seller_email
     mail = smtplib.SMTP('smtp.gmail.com', 587)
     mail.ehlo() #Identify computer
     mail.starttls() #Transport layer security
+<<<<<<< HEAD
     # username = os.getenv('GMAIL_USER_NAME')
     # password = os.getenv('GMAIL_PASSWORD')
     username = "projectjars2019"
     password = "Project-JARS2019"
+=======
+    username = os.getenv("GMAIL_USER_NAME")
+    password = os.getenv("GMAIL_PASSWORD")
+>>>>>>> e5820f75c278a0c3d334634d068f329ca6c9c4e1
     mail.login(username, password)
-    header = "To: " + recipient + "\n" + "From: " + sender + "\n" + "Subject: Someone interested on your listing, \n"
+    header = "To: " + recipient + "\n" + "From: " + sender + "\n" + "Subject: Someone interested in your listing\n"
     content = header + content
     mail.sendmail(sender, recipient, content)
     mail.close()

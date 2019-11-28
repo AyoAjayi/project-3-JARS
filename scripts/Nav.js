@@ -36,7 +36,7 @@ export class Nav extends React.Component {
                 <div className = "nav-container">
                     <div className = "big-bar">
                         <div className = "logo">
-                            <a href="#"><span className = "J">J</span><span class = "A">A</span><span class = "R">R</span><span class = "S">S</span></a>
+                            <a href="#"><span className = "J">J</span><span className = "A">A</span><span className = "R">R</span><span className = "S">S</span></a>
                         </div>
                         <form className = "search" onSubmit = {this.handleSubmit}>
                             <div>
@@ -47,7 +47,7 @@ export class Nav extends React.Component {
                             </div>
                         </form>
                         <div className = "sell-logout">
-                            <Link to="/sell-a-book">Sell a Book</Link>
+                            <Link className = "sell-link" to="/sell-a-book">Sell a Book</Link>
                             {/*Google Logout button is here*/}
                             <div> <Logout/> </div>
                         </div>

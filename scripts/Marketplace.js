@@ -80,7 +80,7 @@ export class Marketplace extends React.Component {
                             </div>
                         </form>
                         <div className = "sell-logout">
-                            <Link to="/sell-a-book">Sell a Book</Link>
+                            <Link className = "sell-link" to="/sell-a-book">Sell a Book</Link>
                             {/*Google Logout button is here*/}
                             <div> <Logout/> </div>
                         </div>
@@ -127,6 +127,7 @@ export class Marketplace extends React.Component {
                                     <button id = "contact-button" onClick = {() => {
                                         alert("Thank you for your inquiry! The seller has recieved your request and will get back to you shortly!");
                                         Socket.emit('selected item', {'email': each_list[9], 'name': each_list[6], 'item':each_list[0]});
+                                        alert("Thank you for your inquiry! The seller, "+ each_list[6] + " has recieved your request and will get back to you shortly.");
                                         console.log("Selected item just got sent to server.");
                                     }} >
                                         Contact Seller
