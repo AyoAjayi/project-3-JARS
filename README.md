@@ -7,6 +7,7 @@
 We have a developed a web app that allows Morgan State students to buy and sell textbooks with ease. Students who want to buy books can log in using their google emails and navigate to the store to view the currently added books. Students can also post books they would like to sell. JARS has set up a means for the buyer to contact the seller in order to make a purchase.
 
 ## Our Purpose
+Our mission 
 
 
 
