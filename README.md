@@ -4,8 +4,11 @@
 
 ## Description
 
-We aim to deliver an app that allows Morgan State students to buy and sell textbooks with ease. This app will allow users to  buy or sell textbooks after being logged in using google. Sellers  will be able to create a profile and post books they have to sell and will be given the means to contact a buyer in order to set up a transaction. Sellers will provide their Morgan email address with the item listing for initial point of contact to make a transaction. Buyers will be able to search for books through our web app.
-At this point of time, JARS is under development cycle (implementation phase) therefore it is only the layout of our webapp.
+We have a developed a web app that allows Morgan State students to buy and sell textbooks with ease. Students who want to buy books can log in using their google emails and navigate to the store to view the currently added books. Students can also post books they would like to sell. JARS has set up a means for the buyer to contact the seller in order to make a purchase.
+
+## Our Mission
+To support students in need of purchasing affordable textbooks and create a self running textbook platform that is uncomplicated to navigate.
+
 
 ## Getting started
 - Install Flask
@@ -21,18 +24,18 @@ At this point of time, JARS is under development cycle (implementation phase) th
 - WebSocket (Socket.io)- For full duplex communication channel
 - Additional libraries- flask_socketio, flask_sqlalchemy, psycopg2, requests, google.oauth2
 
+### Navigating JARS
+- Upon logging in, user will be directed to the marketplace page. 
+- User can click the search button, without typing anything in the search bar,  to display all the books posted
+- User can search for a book using the name, or ISBN number of the book.
+- User can click the contact seller button next to a book's description in order to notify the seller of their interest in the book.
+- User can click the sell a book link in order to add detailed information about the book they would like to sell.
+- User can logout.
 
-## Known Issues
-- After user being logged in through Google, google login button does not automatically redirect the user to the next page (marketplace page). For deomnstration purpose, we have included a login button below the google login button to redirect.
-- Our current database is not optimal for differentiating between buyers and sellers and we might run into issues when scaling the database to handle a lot of people. We need a better data model
-- The way we are retrieving data from our database is by querying the database at once. This is not optimal.
-- We have an upload picture button for the user to upload their textbooks. This button is not currently storing the photos the user uploads.
-- Our search field at times, does not let user conduct searches after another.
-- The user should be able to switch back and forth between multiple pages
+## Future Improvements
+- We hope to allow users to upload photos of their textbooks so that students interested in purchasing books can view the textbooks.
+- We also want students to be able to purchase textbooks directly off the JARS platform.
+- We would like to create a way to verify the prices that students post for books. 
+- We would like to users web session so that whenever they log in, their previous session is stored.
+- Lastly, we would like our web app to be catered specifically towards Morgan state users and not just anyone with a Google login email.
 
-## Resolution to Issues
-- We can make our web app to redirect to marketplace page after successful login from user using react router.
-- We need to create a better data model that identifies relationships between the different fields in our database.
-- We will have to store the uploaded photo so we can render it to the client when a search occurs.
-- We would need to look at the client side of our code to see where the issue is stemming from, since we are currently unsure
-- We have to use react router to implement this into our web app.
