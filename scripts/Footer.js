@@ -11,7 +11,7 @@ export class Footer extends React.Component {
             <footer id = "common-footer">
                 <div className = "common-footer-links">
                     <div className = "footer-link">
-                        <a href="#">About JARS</a>
+                        <a href="https://mailchi.mp/28562834727e/jars_landing_page" target="_blank">About JARS</a>
                     </div>
                     <div className = "footer-link">
                         <a href="#">Announcements</a>
