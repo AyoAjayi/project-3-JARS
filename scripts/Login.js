@@ -19,35 +19,7 @@ export class Login extends React.Component {
       this.setState({loggedIn: true});
     };
   }
-  
-  // componentDidMount(){
-  //   Socket.on('username_received', (data_one) => {
-  //           this.setState({
-  //               'username': data_one['user_name'],
-  //           });
-  //       });
-  // }
-  
-  // componentDidMount(){
-  //   Socket.on('email_received', (data_two) => {
-  //           this.setState({
-  //               'email': data_two['user_email'],
-  //           });
-  //       });
-  // }
-
-  // componentDidMount(){
-  //   Socket.on('image_received', (data) => {
-  //           this.setState({
-  //               'image': data['imageUrl'],
-  //           });
-  //       });
-  // }
-  
   render() {
-    // console.log(this.state.username);
-    // console.log(this.state.email);
-    // console.log(this.state.image);
     
     const responseGoogle = (response) => {
         let auth = gapi.auth2.getAuthInstance();

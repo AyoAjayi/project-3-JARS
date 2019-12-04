@@ -73,6 +73,8 @@ export class Submit extends React.Component {
         console.log('user_message', event.target.value);
     }
     
+   
+    
     handleChangeAuthorName(event){
         this.setState({author_name: event.target.value});
         console.log('author_name: ', event.target.value);
@@ -101,6 +103,8 @@ export class Submit extends React.Component {
         this.setState({category: event.target.value});
         console.log('category: ', event.target.value);
     }
+    
+    
     
     
   render() {
@@ -169,12 +173,12 @@ export class Submit extends React.Component {
                         </div>
                         
                         {/*Upload file option is here*/}
-                        {/*
-                        <div name = "file" className = "file-input">
+                        {/*<div name = "file" class = "file-input">
                             <input type="file" onChange={this.fileChangedHandler}/>
                             <button onClick={this.uploadHandler}>Upload!</button>
-                        </div>
-                        */}
+                        </div>*/}
+                       
+                        
                         
                         {/*Submit button*/}
                         <div>
