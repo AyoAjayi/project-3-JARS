@@ -1,3 +1,4 @@
+
 import os, flask, flask_socketio, flask_sqlalchemy
 
 # For authenticating google token on backend
@@ -43,6 +44,7 @@ def on_google_token_id(token):
         global server_received_imageurl
         server_received_imageurl = idinfo['picture']
         
+        print(idinfo['name'])
         global server_received_name
         server_received_name = idinfo['name']
         
@@ -143,6 +145,8 @@ def on_new_search(search_data):
                     if (single_item2 not in items_to_render):
                         if (search_letter in lw_name_list):
                             items_to_render.append(single_item2)
+    # In order to sort the listing by newly posted
+    items_to_render.reverse()
         
         
         
