@@ -125,7 +125,6 @@ export class Marketplace extends React.Component {
                                 
                                 <div className = "contact-seller">
                                     <button id = "contact-button" onClick = {() => {
-                                        alert("Thank you for your inquiry! The seller has recieved your request and will get back to you shortly!");
                                         Socket.emit('selected item', {'email': each_list[9], 'name': each_list[6], 'item':each_list[0]});
                                         alert("Thank you for your inquiry! The seller, "+ each_list[6] + " has recieved your request and will get back to you shortly.");
                                         console.log("Selected item just got sent to server.");
