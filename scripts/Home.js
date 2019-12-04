@@ -40,7 +40,7 @@ export class Home extends React.Component {
       
         <nav id = "main-navbar">
           <div className = "logo">
-              <a href="#"><span className = "J">J</span><span className = "A">A</span><span className = "R">R</span><span className= "S">S</span></a>
+              <a href="http://stormy-lake-74685.herokuapp.com/"><span className = "J">J</span><span className = "A">A</span><span className = "R">R</span><span className= "S">S</span></a>
           </div>
         </nav>
         
